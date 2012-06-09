@@ -25,7 +25,11 @@
 					$('.red').expected(parseInt($('#expectedValue').val()));
 					$('#output').html('Array has length of ' + $('#expectedValue').val());
 				} catch (ex) {
-					$('#output').html('Array does not have length of ' + $('#expectedValue').val());
+					if (ex instanceof ExpectedValueError) {
+						$('#output').html('<span style="color: red">' + ex + '</span>');
+					} else {
+						console.log(ex);
+					}
 				}
 			});
 		});
