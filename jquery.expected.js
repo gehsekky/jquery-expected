@@ -6,7 +6,9 @@
 		if (typeof (expectedVal) === 'string') {
 			expectedVal = parseInt(expectedVal);
 		}
-		if (!isNumber(expectedVal)) {
+		
+		// check if expected value is a number
+		if (!$.isNumeric(expectedVal)) {
 			throw new ExpectedValueError('Expected value is not a valid number');
 		}
 		
@@ -18,12 +20,6 @@
 		// return original selector array
 		return this;
 	}
-	
-	// internal function used to check if n is a number
-	function isNumber(n) {
-		return !isNaN(parseFloat(n)) && isFinite(n);
-	}
-	
 }(jQuery, window));
 
 // custom error object used by plugin
